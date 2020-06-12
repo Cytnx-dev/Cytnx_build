@@ -8,4 +8,4 @@ else
     conda-build conda_37
 fi
 
-anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu -l $OUTPUT_FN --force
+anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
