@@ -1,5 +1,5 @@
 conda config --set anaconda_upload no
-conda install -c conda_forge cudatoolkit-dev 
+conda install -c conda-forge cudatoolkit-dev 
 
 if [ $TOXENV = 'py36' ]; then
     OUTPUT_FN=$(conda-build conda_gpu_36/ --output)
