@@ -25,3 +25,4 @@ script:
   - conda activate test-environment
   - python --version
   - ./conda_build.sh
+  - - if [ "$TRAVIS_OS_NAME" = "linux" ]; then ./conda_build_gpu.sh     ; fi

@@ -1,5 +1,5 @@
 package:
-  name: cytnx_37
+  name: cytnx_cuda_37
   version: "0.5.3a"
 
 source:
@@ -15,40 +15,42 @@ requirements:
     - numpy >=1.18
     - cmake  
     - pybind11 
-    - boost
+    - boost 
     - mkl >=2019
     - mkl-include >=2019
     - intel-openmp
     - setuptools
+    - cudatoolkit >=10
+    - python-graphviz
     - graphviz
     - blas * mkl
-    - python-graphviz
     - {{ compiler("c")}}
     - {{ compiler("cxx")}}
 
   host:
     - python 3.7
-    - boost
     - numpy >=1.18
+    - boost
     - mkl >=2019
     - mkl-include >=2019
     - intel-openmp
     - setuptools
+    - cudatoolkit >=10
+    - python-graphviz
     - graphviz
     - blas * mkl
-    - python-graphviz
 
   run:
     - python 3.7
+    - numpy >=1.18
     - boost
     - mkl >=2019
     - mkl-include >=2019
     - intel-openmp
-    - numpy >=1.18
     - setuptools
+    - cudatoolkit >=10
     - python-graphviz
     - graphviz
     - blas * mkl
-    - python-graphviz
 
 about:
