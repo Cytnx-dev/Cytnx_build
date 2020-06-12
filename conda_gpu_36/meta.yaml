@@ -20,7 +20,7 @@ requirements:
     - mkl-include >=2019
     - intel-openmp
     - setuptools
-    - cudatoolkit >=10
+    - cudatoolkit >=10.1
     - graphviz
     - python-graphviz
     - blas * mkl
