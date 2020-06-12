@@ -10,12 +10,16 @@ jobs:
       env: TOXENV=py37
     - os: osx
       language: generic
+      env: TOXENV=py36
+    - os: osx
+      language: generic
       env: TOXENV=py37
       
 install:
-  - ./install_entry.sh
+  - ./install_conda.sh
 
 script:
   - source "$HOME/miniconda/etc/profile.d/conda.sh"
   - conda activate test-environment
   - python --version
+  - ./conda_build.sh
