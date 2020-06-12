@@ -13,7 +13,7 @@ job:
       env: TOXENV=py37
       
 install:
-  ./install_entry.sh
+  - ./install_entry.sh
 
 script:
   - conda activate test-environment
