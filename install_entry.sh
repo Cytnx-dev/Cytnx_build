@@ -26,9 +26,7 @@ conda info -a
 # Replace dep1 dep2 ... with your dependencies
 if [ $TOXENV = 'py36' ]; then
     conda create -q -n test-environment python=3.6;
-elif [ $TOXENV = 'py37' ]; then
+else
     conda create -q -n test-environment python=3.7;
-else 
-    echo "ERROR occur!"
 fi
 
