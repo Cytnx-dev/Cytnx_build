@@ -25,8 +25,8 @@ conda info -a
 
 # Replace dep1 dep2 ... with your dependencies
 if [ $TOXENV = 'py36' ]; then
-    conda create -q -n test-environment python=3.6;
+    conda create -q -n test-environment python=3.6 anaconda-client conda-build;
 else
-    conda create -q -n test-environment python=3.7;
+    conda create -q -n test-environment python=3.7 anaconda-client conda-build;
 fi
 
