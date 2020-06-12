@@ -16,5 +16,6 @@ install:
   - ./install_entry.sh
 
 script:
+  - source "$HOME/miniconda/etc/profile.d/conda.sh"
   - conda activate test-environment
   - python --version
