@@ -15,6 +15,7 @@ else
 fi
 
 bash miniconda.sh -b -p $HOME/miniconda
+echo $HOME
 source "$HOME/miniconda/etc/profile.d/conda.sh"
 hash -r
 conda config --set always_yes yes --set changeps1 no
