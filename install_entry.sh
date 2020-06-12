@@ -4,13 +4,13 @@ if [ $TRAVIS_OS_NAME = 'osx' ]; then
 
     # Install some custom requirements on macOS
     # e.g. brew install pyenv-virtualenv
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-X86_64.sh -O miniconda.sh;
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh;
 else
     # Install some custom requirements on Linux
     sudo apt update
     # We do this conditionally because it saves us some downloading if the
     # version is the same.
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-X86_64.sh -O miniconda.sh;
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
     
 fi
 
