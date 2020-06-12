@@ -1,6 +1,6 @@
 language: python
 
-job:
+jobs:
   include:
     - os: linux
       python: 3.6
