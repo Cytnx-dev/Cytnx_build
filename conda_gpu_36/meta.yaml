@@ -21,6 +21,7 @@ requirements:
     - intel-openmp
     - setuptools
     - cudatoolkit >=10.1
+    - cudatoolkit-dev >=10.1
     - graphviz
     - python-graphviz
     - blas * mkl
