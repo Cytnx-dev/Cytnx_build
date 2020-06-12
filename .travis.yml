@@ -3,6 +3,11 @@ python:
   # We don't actually use the Travis Python, but this keeps it organized.
   - "3.6"
   - "3.7"
+
+os:
+  - linux
+  - osx
+
 install:
   - sudo apt update
   # We do this conditionally because it saves us some downloading if the
@@ -21,4 +26,4 @@ install:
   - conda activate test-environment
 
 script:
-  # Your test script goes here
+  - python --version
