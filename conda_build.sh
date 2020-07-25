@@ -1,5 +1,5 @@
 conda config --set anaconda_upload no
-
+ 
 if [ $TOXENV = 'py36' ]; then
     OUTPUT_FN=$(conda-build conda_36/ --output)
     conda-build conda_36
