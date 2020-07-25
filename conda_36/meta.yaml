@@ -1,12 +1,12 @@
 package:
   name: cytnx_36
-  version: "0.5.4a"
+  version: "0.5.5a"
 
 source:
   git_url: https://github.com/kaihsin/Cytnx.git
 
 build:
-  number: 1
+  number: 0
 
 
 requirements:
