@@ -27,6 +27,10 @@ conda info -a
 if [ $TOXENV = 'py36' ]; then
     conda create -q -n test-environment python=3.6 anaconda-client conda-build;
 else
-    conda create -q -n test-environment python=3.7 anaconda-client conda-build;
+    if [ $TOXENV = 'py37' ]; then
+        conda create -q -n test-environment python=3.7 anaconda-client conda-build;
+    else
+        conda create -q -n test-environment python=3.8 anaconda-client conda-build;
+    fi
 fi
 
