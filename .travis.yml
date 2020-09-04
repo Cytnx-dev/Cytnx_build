@@ -17,6 +17,11 @@ jobs:
       env: TOXENV=py38
       dist: bionic
 
+    - os: linux
+      python: 3.8
+      env: TOXENV=gen
+      dist: bionic
+
     - os: osx
       language: generic
       env: TOXENV=py36
