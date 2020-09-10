@@ -1,6 +1,6 @@
 package:
   name: cytnx
-  version: "0.5.6a"
+  version: "0.6a"
 
 source:
   git_url: https://github.com/kaihsin/Cytnx.git
