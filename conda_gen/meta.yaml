@@ -16,8 +16,8 @@ requirements:
     - cmake  
     - pybind11 
     - boost
-    - mkl >=2020
-    - mkl-include >=2020
+    - mkl >=2019
+    - mkl-include >=2019
     - intel-openmp 
     - setuptools
     - python-graphviz
@@ -30,8 +30,8 @@ requirements:
     - python 
     - numpy >=1.18
     - boost
-    - mkl >=2020
-    - mkl-include >=2020
+    - mkl >=2019
+    - mkl-include >=2019
     - intel-openmp
     - setuptools
     - python-graphviz
@@ -42,8 +42,8 @@ requirements:
     - python 
     - numpy >=1.18
     - boost
-    - mkl >=2020
-    - mkl-include >=2020
+    - mkl >=2019
+    - mkl-include >=2019
     - intel-openmp 
     - setuptools
     - python-graphviz
