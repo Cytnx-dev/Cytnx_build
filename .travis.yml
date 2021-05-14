@@ -7,9 +7,6 @@ jobs:
       env: TOXENV=gen
       dist: focal
 
-    - os: osx
-      language: generic
-      env: TOXENV=gen
       
 install:
   - ./install_conda.sh
