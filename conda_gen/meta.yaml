@@ -18,7 +18,6 @@ requirements:
     - boost
     - mkl >=2019
     - mkl-include >=2019
-    - intel-openmp
     - llvm-openmp 
     - setuptools
     - python-graphviz
@@ -33,7 +32,6 @@ requirements:
     - boost
     - mkl >=2019
     - mkl-include >=2019
-    - intel-openmp
     - llvm-openmp
     - setuptools
     - python-graphviz
@@ -46,7 +44,6 @@ requirements:
     - boost
     - mkl >=2019
     - mkl-include >=2019
-    - intel-openmp 
     - llvm-openmp
     - setuptools
     - python-graphviz
