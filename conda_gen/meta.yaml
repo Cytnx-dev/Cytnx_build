@@ -1,6 +1,6 @@
 package:
   name: cytnx
-  version: "0.7.4a"
+  version: "0.7.6a"
 
 source:
   git_url: https://github.com/kaihsin/Cytnx.git
@@ -14,8 +14,10 @@ requirements:
     - python {{ python }}
     - numpy >=1.18
     - cmake  
+    - make
     - pybind11 
     - boost
+    - libboost
     - mkl >=2019
     - mkl-include >=2019
     - llvm-openmp 
@@ -30,26 +32,36 @@ requirements:
     - python 
     - numpy >=1.18
     - boost
+    - libboost
+    - make
     - mkl >=2019
     - mkl-include >=2019
+    - mkl-service
     - llvm-openmp
     - setuptools
     - python-graphviz
     - graphviz
     - blas * mkl
+    - {{ compiler("c")}}
+    - {{ compiler("cxx")}}
 
   run:
     - python 
     - numpy >=1.18
     - boost
+    - libboost
     - mkl >=2019
     - mkl-include >=2019
+    - mkl-service
     - llvm-openmp
     - setuptools
     - python-graphviz
     - graphviz
     - blas * mkl
     - cmake
+    - make
     - pybind11
+    - {{ compiler("c")}}
+    - {{ compiler("cxx")}}
     
 about:
