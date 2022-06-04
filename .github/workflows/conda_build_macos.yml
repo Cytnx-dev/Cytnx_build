@@ -39,7 +39,7 @@ jobs:
       working-directory: ${{github.workspace}}
       run: |
         source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
-        conda create -q -n test-environment python=3.10 anaconda-client conda-build
+        conda create -q -n test-environment python=3.10 anaconda-client conda-build compilers
         conda activate test-environment
         conda config --set anaconda_upload no
         OUTPUT_FN=$(conda build conda_gen/ --output)
