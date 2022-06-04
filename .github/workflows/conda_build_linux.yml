@@ -27,6 +27,7 @@ jobs:
       run: |
         # Useful for debugging any issues with conda
         $CONDA/bin/conda info -a
+        $CONDA/bin/conda config --add channels conda-forge
         $CONDA/bin/conda install python=3.10 anaconda-client conda-build
         $CONDA/bin/conda install -c conda-forge compilers
 
