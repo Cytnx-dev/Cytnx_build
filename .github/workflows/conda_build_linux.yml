@@ -22,17 +22,16 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install Anaconda
+    - name: Show conda info
       working-directory: ${{github.workspace}}
       run: |
         # Useful for debugging any issues with conda
         conda info -a
-        #conda create -q -n test-environment python=3.10 anaconda-client conda-build=3.20.1;
-        conda create -q -n test-environment python=3.10 anaconda-client conda-build
         
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
+        conda create -q -n test-environment python=3.10 anaconda-client conda-build
         conda config --set anaconda_upload no
         OUTPUT_FN=$(conda build conda_gen/ --output)
         conda build conda_gen/
