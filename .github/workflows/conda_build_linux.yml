@@ -24,8 +24,14 @@ jobs:
         bash miniconda.sh -b -p $HOME/minicondaL
         echo $HOME
         source $HOME/minicondaL/etc/profile.d/conda.sh
-        #hash -r
-        #conda config --set always_yes yes --set changeps1 no
+
+    - name: Config conda
+      working-directory: ${{github.workspace}}
+      run: |
+        hash -r
+        conda config --set always_yes yes --set changeps1 no
+        conda create -q -n test-environment python=3.10
+        conda activate test-environment
         #conda update -q conda
         #conda info -a
         #conda create -q -n test-environment python=3.10 anaconda-client conda-build
