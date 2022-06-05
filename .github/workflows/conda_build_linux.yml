@@ -49,19 +49,16 @@ jobs:
         source $HOME/minicondaL/etc/profile.d/conda.sh
         conda run -n test-enviroment python --version
         conda run -n test-enviroment conda -h
-        #conda run -n test-enviroment conda config --set anaconda_upload no
+        conda run -n test-enviroment conda config --set anaconda_upload no
         # get binary output dir 
-        #OUTPUT_FN=$(conda run -n test-enviroment conda build conda_gen/ --output)
-        #conda run -n test-enviroment conda build conda_gen/
-        #conda run -n test-enviroment anaconda -h
+        OUTPUT_FN=$(conda run -n test-enviroment conda-build conda_gen/ --output)
+        # building on env. 
+        conda run -n test-enviroment conda build conda_gen/
+        conda run -n test-enviroment anaconda -h
 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
-        #$CONDA/bin/conda init bash
-        #conda activate test-environ
-        #python --version
-        #conda config --set anaconda_upload no
-        #OUTPUT_FN=$(conda build conda_gen/ --output)
-        #$CONDA/bin/conda build conda_gen/
-        #anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+        echo "Upload build---------------------------------"
+        source $HOME/minicondaL/etc/profile.d/conda.sh
+        conda run -n test-enviroment anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
