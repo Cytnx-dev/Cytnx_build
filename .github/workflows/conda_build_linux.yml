@@ -36,12 +36,14 @@ jobs:
 
         hash -r
         conda config --set always_yes yes --set changeps1 no
+        conda install anaconda-client conda-build
+        anaconda -h
         conda config --add channels conda-forge
         conda update -q conda
         conda update -q --all
-        conda install anaconda-client conda-build
+        #conda install anaconda-client conda-build
         
-        anaconda -h
+        #anaconda -h
 
         #conda create -q -n test-enviroment python=3.10 anaconda-client conda-build _openmp_mutex=*=*_llvm
         #conda env list
