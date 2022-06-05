@@ -34,13 +34,12 @@ jobs:
         source $HOME/minicondaL/etc/profile.d/conda.sh
         conda info -a
 
-        #hash -r
-        #conda config --set always_yes yes --set changeps1 no
-        #conda config --add channels conda-forge
-        #conda update -q conda
-        #conda info -a
-        #conda create -q -n test-environment python=3.10 anaconda-client conda-build _openmp_mutex=*=*_llvm
-        #conda run -n test-enviroment python --version
+        hash -r
+        conda config --set always_yes yes --set changeps1 no
+        conda config --add channels conda-forge
+        conda update -q conda
+        conda create -q -n test-environment python=3.10 anaconda-client conda-build _openmp_mutex=*=*_llvm
+        conda run -n test-enviroment python --version
 
     - name: start building
       working-directory: ${{github.workspace}}
