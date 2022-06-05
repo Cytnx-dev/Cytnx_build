@@ -40,8 +40,8 @@ jobs:
       working-directory: ${{github.workspace}}
       run: |
         source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
-        conda install anaconda-client conda-build
-        source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
+        conda create -q -n test-environ python=3.10 anaconda-client conda-build
+        conda activate test-environ
         # this is to check debug
         anaconda -h
         conda config --set anaconda_upload no
