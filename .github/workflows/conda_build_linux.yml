@@ -31,6 +31,7 @@ jobs:
         hash -r
         conda config --set always_yes yes --set changeps1 no
         conda create -q -n test-environment python=3.10
+        conda init bash
         conda activate test-environment
         #conda update -q conda
         #conda info -a
