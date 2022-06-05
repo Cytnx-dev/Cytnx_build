@@ -38,27 +38,34 @@ jobs:
         conda config --set always_yes yes --set changeps1 no
         conda config --add channels conda-forge
         conda update -q conda
-        conda create -q -n test-enviroment python=3.10 anaconda-client conda-build _openmp_mutex=*=*_llvm
-        conda env list
-        conda run -n test-enviroment python --version
+        conda update -q --all
+        conda install anaconda-client conda-build
+
+        #conda create -q -n test-enviroment python=3.10 anaconda-client conda-build _openmp_mutex=*=*_llvm
+        #conda env list
+        #conda run -n test-enviroment python --version
 
     - name: start building
       working-directory: ${{github.workspace}}
       run: |
-        echo "Start building---------------------------------"
+        echo "Building begin---------------------------------"
         source $HOME/minicondaL/etc/profile.d/conda.sh
-        conda run -n test-enviroment python --version
-        conda run -n test-enviroment conda -h
-        conda run -n test-enviroment conda config --set anaconda_upload no
-        # get binary output dir 
-        OUTPUT_FN=$(conda run -n test-enviroment conda-build conda_gen/ --output)
+        #conda run -n test-enviroment python --version
+        #conda run -n test-enviroment conda -h
+        #conda run -n test-enviroment conda config --set anaconda_upload no
+        conda config --set anaconda_upload no
+        
+        echo "Get Output file names:_________________" 
+        OUTPUT_FN=$(conda-build conda_gen/ --output)
+        
+        echo "Start building---------------------------------"
         # building on env. 
-        conda run -n test-enviroment conda build conda_gen/
-        conda run -n test-enviroment anaconda -h
+        #conda build conda_gen/
+        anaconda -h
 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
-        echo "Upload build---------------------------------"
-        source $HOME/minicondaL/etc/profile.d/conda.sh
-        conda run -n test-enviroment anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+        #echo "Upload build---------------------------------"
+        #source $HOME/minicondaL/etc/profile.d/conda.sh
+        #conda run -n test-enviroment anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
