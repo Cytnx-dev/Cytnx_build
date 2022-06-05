@@ -17,35 +17,60 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10'
-
-    - name: Install Anaconda
+    - name: Install miniconda3 and create env
       working-directory: ${{github.workspace}}
       run: |
+        echo "Install miniconda---------------------------------"
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh
-        bash miniconda.sh -b -p ${{github.workspace}}/miniconda
-        echo ${{github.workspace}}
-        source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
-        hash -r
-        conda init bash
-        conda config --set always_yes yes --set changeps1 no
-        conda config --add channels conda-forge 
-        conda update -q --all
-        # Useful for debugging any issues with conda
+        bash miniconda.sh -b -p $HOME/minicondaL
+        echo $HOME
+        source $HOME/minicondaL/etc/profile.d/conda.sh
         conda info -a
-        
+
+    - name: Config Conda
+      working-directory: ${{github.workspace}}
+      run: |
+        echo "Config Conda---------------------------------"
+
+        source $HOME/minicondaL/etc/profile.d/conda.sh
+        conda info -a
+
+        hash -r
+        conda config --set always_yes yes --set changeps1 no
+
+        conda config --add channels conda-forge
+        conda update -q conda
+        conda update -q --all
+        conda install anaconda-client conda-build
+        $HOME/minicondaL/bin/anaconda -h
+
+
+    - name: start building
+      working-directory: ${{github.workspace}}
+      run: |
+        echo "Building begin---------------------------------"
+        source $HOME/minicondaL/etc/profile.d/conda.sh
+        conda config --set anaconda_upload no
+
+        # these are infos used to check environ
+        conda info -a
+        conda list
+        $HOME/minicondaL/bin/anaconda -h
+
+
+        echo "Get Output file names:_________________"
+        OUTPUT_FN=$(conda build conda_gen/ --output)
+
+        echo "Start building---------------------------------"
+        conda build conda_gen/
+
+
+
+ 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
-        source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
-        conda create -q -n test-environ python=3.10 anaconda-client conda-build
-        conda activate test-environ
-        # this is to check debug
-        anaconda -h
-        conda config --set anaconda_upload no
-        OUTPUT_FN=$(conda build conda_gen/ --output)
-        conda build conda_gen/
-        anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+        echo "Upload build---------------------------------"
+        source $HOME/minicondaL/etc/profile.d/conda.sh
+        #$HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+

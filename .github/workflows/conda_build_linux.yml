@@ -36,7 +36,6 @@ jobs:
 
         hash -r
         conda config --set always_yes yes --set changeps1 no
-        ls $HOME/minicondaL/bin
 
         conda config --add channels conda-forge
         conda update -q conda
@@ -61,11 +60,11 @@ jobs:
         OUTPUT_FN=$(conda build conda_gen/ --output)
         
         echo "Start building---------------------------------"
-        #conda build conda_gen/
+        conda build conda_gen/
 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
         echo "Upload build---------------------------------"
         source $HOME/minicondaL/etc/profile.d/conda.sh
-        $HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+        #$HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
