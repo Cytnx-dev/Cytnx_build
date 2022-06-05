@@ -40,6 +40,8 @@ jobs:
         conda update -q conda
         conda update -q --all
         conda install anaconda-client conda-build
+        
+        anaconda -h
 
         #conda create -q -n test-enviroment python=3.10 anaconda-client conda-build _openmp_mutex=*=*_llvm
         #conda env list
@@ -54,8 +56,13 @@ jobs:
         #conda run -n test-enviroment conda -h
         #conda run -n test-enviroment conda config --set anaconda_upload no
         conda config --set anaconda_upload no
+
+        # these are infos used to check environ
         conda info -a        
         conda list
+        anaconda -h 
+
+
 
         echo "Get Output file names:_________________" 
         OUTPUT_FN=$(conda build conda_gen/ --output)
@@ -63,11 +70,10 @@ jobs:
         echo "Start building---------------------------------"
         # building on env. 
         #conda build conda_gen/
-        anaconda -h
 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
-        #echo "Upload build---------------------------------"
-        #source $HOME/minicondaL/etc/profile.d/conda.sh
-        #conda run -n test-enviroment anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+        echo "Upload build---------------------------------"
+        source $HOME/minicondaL/etc/profile.d/conda.sh
+        #anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
