@@ -59,10 +59,10 @@ jobs:
 
 
         echo "Get Output file names:_________________"
-        OUTPUT_FN=$(conda build conda_gen/ --output)
+        OUTPUT_FN=$(conda build conda_gen_mac/ --output)
 
         echo "Start building---------------------------------"
-        conda build conda_gen/
+        conda build conda_gen_mac/
 
 
 
@@ -72,5 +72,6 @@ jobs:
       run: |
         echo "Upload build---------------------------------"
         source $HOME/minicondaL/etc/profile.d/conda.sh
-        #$HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
-
+        $HOME/minicondaL/bin/anaconda -t $TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+      env:
+        TOKEN: ${{ secrets.CONDA_UPLOAD_TOKEN }}
