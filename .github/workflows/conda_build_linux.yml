@@ -29,12 +29,13 @@ jobs:
         $CONDA/bin/conda info -a
         $CONDA/bin/conda init bash
         $CONDA/bin/conda config --add channels conda-forge
-        $CONDA/bin/conda update --all
+        $CONDA/bin/conda update -q --all
         $CONDA/bin/conda create -q -n test-environ python=3.10 anaconda-client conda-build
 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
+        $CONDA/bin/conda init bash
         $CONDA/bin/conda activate test-environ
         python --verrsion
         $CONDA/bin/conda config --set anaconda_upload no
