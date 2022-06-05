@@ -41,6 +41,7 @@ jobs:
       run: |
         source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
         conda install anaconda-client conda-build
+        source "${{github.workspace}}/miniconda/etc/profile.d/conda.sh"
         # this is to check debug
         anaconda -h
         conda config --set anaconda_upload no
