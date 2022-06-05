@@ -54,9 +54,11 @@ jobs:
         #conda run -n test-enviroment conda -h
         #conda run -n test-enviroment conda config --set anaconda_upload no
         conda config --set anaconda_upload no
-        
+        conda info -a        
+        conda list
+
         echo "Get Output file names:_________________" 
-        OUTPUT_FN=$(conda-build conda_gen/ --output)
+        OUTPUT_FN=$(conda build conda_gen/ --output)
         
         echo "Start building---------------------------------"
         # building on env. 
