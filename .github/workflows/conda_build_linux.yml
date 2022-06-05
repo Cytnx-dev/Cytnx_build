@@ -26,19 +26,18 @@ jobs:
       working-directory: ${{github.workspace}}
       run: |
         # Useful for debugging any issues with conda
-        $CONDA/bin/conda info -a
         $CONDA/bin/conda init bash
-        $CONDA/bin/conda config --add channels conda-forge
-        $CONDA/bin/conda update -q --all
-        $CONDA/bin/conda create -q -n test-environ python=3.10 anaconda-client conda-build
+        conda info -a
+        conda config --add channels conda-forge
+        conda update -q --all
+        conda create -q -n test-environ python=3.10 anaconda-client conda-build
 
     - name: Upload build
       working-directory: ${{github.workspace}}
       run: |
-        $CONDA/bin/conda init bash
-        $CONDA/bin/conda activate test-environ
-        python --verrsion
-        $CONDA/bin/conda config --set anaconda_upload no
+        conda activate test-environ
+        python --version
+        conda config --set anaconda_upload no
         OUTPUT_FN=$(conda build conda_gen/ --output)
         $CONDA/bin/conda build conda_gen/
         anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
