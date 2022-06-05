@@ -48,11 +48,12 @@ jobs:
         echo "Start building---------------------------------"
         source $HOME/minicondaL/etc/profile.d/conda.sh
         conda run -n test-enviroment python --version
-        conda run -n test-enviroment conda config --set anaconda_upload no
+        conda run -n test-enviroment conda -h
+        #conda run -n test-enviroment conda config --set anaconda_upload no
         # get binary output dir 
-        OUTPUT_FN=$(conda run -n test-enviroment conda build conda_gen/ --output)
+        #OUTPUT_FN=$(conda run -n test-enviroment conda build conda_gen/ --output)
         #conda run -n test-enviroment conda build conda_gen/
-        conda run -n test-enviroment anaconda -h
+        #conda run -n test-enviroment anaconda -h
 
     - name: Upload build
       working-directory: ${{github.workspace}}
