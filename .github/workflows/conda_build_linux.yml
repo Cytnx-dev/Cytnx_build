@@ -63,7 +63,8 @@ jobs:
         conda build conda_gen/
 
         echo "Upload build---------------------------------"
-        source $HOME/minicondaL/etc/profile.d/conda.sh
+        #source $HOME/minicondaL/etc/profile.d/conda.sh
+        echo $OUTPUT_FN
         $HOME/minicondaL/bin/anaconda upload -t $TOKEN -u kaihsinwu $OUTPUT_FN --force
 
       env:
