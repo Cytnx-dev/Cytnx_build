@@ -67,4 +67,4 @@ jobs:
       run: |
         echo "Upload build---------------------------------"
         source $HOME/minicondaL/etc/profile.d/conda.sh
-        #$HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
+        $HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
