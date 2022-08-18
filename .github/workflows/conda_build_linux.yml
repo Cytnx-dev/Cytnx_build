@@ -66,6 +66,9 @@ jobs:
         source $HOME/minicondaL/etc/profile.d/conda.sh
         $HOME/minicondaL/bin/anaconda upload -t $TOKEN -u kaihsinwu $OUTPUT_FN --force
 
+      env:
+        TOKEN: ${{ secrets.CONDA_UPLOAD_TOKEN }}
+
 
     - name: Upload build
       working-directory: ${{github.workspace}}
