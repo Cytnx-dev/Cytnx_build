@@ -16,64 +16,46 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Install miniconda3 and create env
-      working-directory: ${{github.workspace}}
-      run: |
-        echo "Install miniconda---------------------------------"
-        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-        bash miniconda.sh -b -p $HOME/minicondaL
-        echo $HOME
-        source $HOME/minicondaL/etc/profile.d/conda.sh
-        conda info -a
-    
+
+    - uses: conda-incubator/setup-miniconda@v2
+      with:
+        # Specify python version your environment will have. Remember to quote this, or
+        # YAML will think you want python 3.1 not 3.10
+        python-version: "3.10"
+        # This uses *miniforge*, rather than *minicond*. The primary difference is that
+        # the defaults channel is not enabled at all
+        miniforge-version: latest
+        # These properties enable the use of mamba, which is much faster and far less error
+        # prone than conda while being completely compatible with the conda CLI
+        use-mamba: true
+        mamba-version: "*"
+
     - name: Config Conda
       working-directory: ${{github.workspace}}
       run: |
         echo "Config Conda---------------------------------"
-        source $HOME/minicondaL/etc/profile.d/conda.sh
-        conda info -a
-
-        hash -r
-        conda config --set always_yes yes --set changeps1 no
-
-        conda config --add channels conda-forge
-        conda update -q conda
-        conda update -q --all
-        conda install anaconda-client conda-build
-        $HOME/minicondaL/bin/anaconda -h
-
+        mamba install anaconda-client boa -c conda-forge
 
     - name: start building
       working-directory: ${{github.workspace}}
       run: |
         echo "Building begin---------------------------------"
-        source $HOME/minicondaL/etc/profile.d/conda.sh
-        conda config --set anaconda_upload no
+        mamba config --set anaconda_upload no
 
         # these are infos used to check environ
-        conda info -a        
-        conda list
-        $HOME/minicondaL/bin/anaconda -h 
+        mamba info -a
+        mamba list
+        mamba -h 
 
         echo "Get Output file names:_________________" 
         OUTPUT_FN=$(conda build conda_gen/ --output)
         
         echo "Start building---------------------------------"
-        conda build conda_gen/
+        conda mambabuild conda_gen/
 
         echo "Upload build---------------------------------"
-        #source $HOME/minicondaL/etc/profile.d/conda.sh
         echo $OUTPUT_FN
-        $HOME/minicondaL/bin/anaconda upload -t $TOKEN -u kaihsinwu $OUTPUT_FN --force
+        conda upload -t $TOKEN -u kaihsinwu $OUTPUT_FN --force
 
       env:
         TOKEN: ${{ secrets.CONDA_UPLOAD_TOKEN }}
-
-
-    - name: Upload build
-      working-directory: ${{github.workspace}}
-      run: |
-        echo "Upload build---------------------------------"
-        source $HOME/minicondaL/etc/profile.d/conda.sh
-        #$HOME/minicondaL/bin/anaconda -t $CONDA_UPLOAD_TOKEN upload -u kaihsinwu $OUTPUT_FN --force
